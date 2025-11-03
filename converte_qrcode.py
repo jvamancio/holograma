@@ -7,9 +7,9 @@ def gerar_qrcode(link, qr_path='qrcode.png'):
     Gera QR Code a partir de um link
     """
     qr = qrcode.QRCode(
-        version=4,  # Ajusta tamanho
-        error_correction=qrcode.constants.ERROR_CORRECT_H,
-        box_size=10,
+        version=1,  # Ajusta tamanho
+        error_correction=qrcode.constants.ERROR_CORRECT_L,  # menos redundância
+        box_size=20,  # cada quadradinho maior = melhor rastreio
         border=4
     )
     qr.add_data(link)
