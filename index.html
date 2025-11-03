@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>WebAR Holograma</title>
+    <script src="https://cdn.jsdelivr.net/npm/aframe@1.4.1/dist/aframe.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/ar.js@3.4.5/aframe/build/aframe-ar.js"></script>
+</head>
+<body style="margin: 0; overflow: hidden;">
+
+<a-scene embedded arjs="sourceType: webcam;">
+  
+  <!-- Marcador padrão (hiro). Depois podemos trocar por QR personalizado -->
+  <a-marker preset="hiro">
+
+    <!-- Plano onde o vídeo será projetado -->
+    <a-video 
+      src="#video" 
+      width="1" 
+      height="1" 
+      position="0 0 0">
+    </a-video>
+
+  </a-marker>
+
+  <a-entity camera></a-entity>
+
+  <!-- Define o vídeo como asset -->
+  <a-assets>
+    <video id="video" autoplay loop muted playsinline src="video_transparent.webm"></video>
+  </a-assets>
+
+</a-scene>
+
+</body>
+</html>
