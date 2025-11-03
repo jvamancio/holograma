@@ -1,15 +1,37 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <script src="https://aframe.io/releases/1.4.2/aframe.min.js"></script>
+    <meta charset="utf-8">
+    <title>QR Code AR Holograma</title>
+    <script src="https://aframe.io/releases/1.5.0/aframe.min.js"></script>
     <script src="https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar.js"></script>
   </head>
 
   <body style="margin: 0; overflow: hidden;">
-    <a-scene embedded arjs>
-      <a-marker preset="hiro">
-        <a-video src="video_transparent.webm" width="1" height="1" position="0 0 0"></a-video>
+    <a-scene embedded arjs="trackingMethod: best; sourceType: webcam;">
+      
+      <!-- QR Code como marcador -->
+      <a-marker type="pattern" url="assets/marker.patt">
+
+        <!-- Vídeo flutuante -->
+        <a-video
+          src="#myVideo"
+          width="1.2"
+          height="0.7"
+          position="0 0 0"
+          rotation="-60 0 0"
+          autoplay="true"
+          loop="true">
+        </a-video>
+
       </a-marker>
+
+      <!-- Assets -->
+      <a-assets>
+        <video id="myVideo" src="assets/video.webm" autoplay loop muted playsinline></video>
+      </a-assets>
+
+      <!-- Camera -->
       <a-entity camera></a-entity>
     </a-scene>
   </body>
